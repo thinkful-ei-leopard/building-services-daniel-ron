@@ -3,11 +3,11 @@
 Created a service using knex that contains CRUD methods. We can use this service in the future to work on our database.
 
 Methods include:
-   getAllItems = get
-   getById = get
-   insertShoppingListItem = insert
-   deleteItem = delete
-   updateItem = update
+   + getAllItems = get
+   + getById = get
+   + insertShoppingListItem = insert
+   + deleteItem = delete
+   + updateItem = update
 
 Authors: Daniel Fong and Ron Martin
 
