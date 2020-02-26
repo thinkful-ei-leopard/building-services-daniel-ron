@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
-    "dev": "nodemon src/drills.js",
-    "start": "node src/drills.js",
+    "dev": "nodemon src/shopful.js",
+    "start": "node src/shopful.js",
     "predeploy": "npm audit",
     "deploy": "git push heroku master"
   },
