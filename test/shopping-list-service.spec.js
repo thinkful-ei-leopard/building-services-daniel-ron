@@ -83,6 +83,24 @@ describe('Shopping list service object', function() {
         });
     });
 
+    it(`updateItem() updates an item from 'shopping_list' table`, () => {
+        const itemId = 3;
+        const newItemData = {
+            name: 'updated name',
+            price: 1.00,
+            date_added: new Date(),
+            category: 'Snack',
+            checked: false
+        };
+        return ShoppingListService.updateItem(db, itemId, newItemData)
+            .then(() => ShoppingListService.getById(db, itemId))
+            .then(item => {
+                expect(item).to.eql({
+                    id: itemId, 
+                    ...newItemData,
+                })
+            });
+    });
 
   });
 
