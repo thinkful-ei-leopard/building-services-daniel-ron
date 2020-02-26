@@ -31,24 +31,21 @@ describe('Shopping list service object', function() {
 
   before(() => db('shopping_list').truncate());
 
-  before(() => {
-    return db('shopping_list')
-      .insert(testItems);
-  });
-
   after(() => db.destroy());
 
-  describe('getAllItems()', () => {
-    it(`resolves all items from 'shopping_list' table`, () => {
+  context(`Given 'shopping_list' has data`, () => {
+    before(() => {
+      return db('shopping_list')
+        .insert(testItems);
+    });
+
+    it(`getAllItems() resolves all items from 'shopping_list' table`, () => {
       // test that ArticlesService.getAllArticles gets data from table
       return ShoppingListService.getAllItems(db)
         .then(actual => {
           expect(actual).to.eql(testItems);
         });
-      console.log('testing');
     });
   });
-
-  
 });
 
