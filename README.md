@@ -5,7 +5,7 @@ Created a service using knex that contains CRUD methods. We can use this service
 Methods include:
    + getAllItems = get
    + getById = get
-   + insertShoppingListItem = insert
+   + insertItem = insert
    + deleteItem = delete
    + updateItem = update
 

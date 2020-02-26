@@ -3,7 +3,7 @@ const ShoppingListService = {
     return knex.select('*').from('shopping_list');
   },
 
-  insertShoppingListItem(knex, newItem) {
+  insertItem(knex, newItem) {
     return knex('shopping_list')
       .insert(newItem)
       .returning('*')

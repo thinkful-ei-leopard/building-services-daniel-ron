@@ -112,7 +112,7 @@ describe('Shopping list service object', function() {
         });
     });
 
-    it(`insertShoppingListItem() inserts a new item and resolves the new item with an 'id'`, () => {
+    it(`insertItem() inserts a new item and resolves the new item with an 'id'`, () => {
       const newItem = {
         name: 'faddle sticks',
         price:  1.95,
@@ -121,7 +121,7 @@ describe('Shopping list service object', function() {
         date_added: new Date('2020-02-26'),
       };
 
-      return ShoppingListService.insertShoppingListItem(db, newItem)
+      return ShoppingListService.insertItem(db, newItem)
         .then(actual => {
           expect(actual).to.eql({
             id: 1,
