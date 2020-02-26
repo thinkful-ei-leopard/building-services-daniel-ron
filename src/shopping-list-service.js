@@ -1,6 +1,6 @@
 const ShoppingListService = {
-  getAllItems() {
-    return 'all the shopping list items';
+  getAllItems(knex) {
+    return knex.select('*').from('shopping_list');
   }
 };
 
