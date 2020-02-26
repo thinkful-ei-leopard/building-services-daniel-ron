@@ -57,6 +57,28 @@ describe('Shopping list service object', function() {
           expect(actual).to.eql([]);
         });
     });
+
+    it(`insertShoppingListItem() inserts a new item and resolves the new item with an 'id'`, () => {
+      const newItem = {
+        name: 'faddle sticks',
+        price:  1.95,
+        category: 'Lunch',
+        checked: false,
+        date_added: new Date('2020-02-26'),
+      };
+
+      return ShoppingListService.insertShoppingListItem(db, newItem)
+        .then(actual => {
+          expect(actual).to.eql({
+            id: 1,
+            name: newItem.name,
+            price: newItem.price,
+            category: newItem.category,
+            checked: newItem.checked,
+            date_added: newItem.date_added
+          });
+        });
+    });
   });
 });
 
