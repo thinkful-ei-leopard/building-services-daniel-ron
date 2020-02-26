@@ -19,6 +19,14 @@ describe('Shopping list service object', function() {
       price:  1.95,
       category: 'Lunch',
       checked: false,
+    },    
+    {
+      id: 3,
+      date_added: new Date('2020-02-15'),
+      name: 'bobble sticks',
+      price:  66.95,
+      category: 'Breakfast',
+      checked: false,
     },
   ];
 
@@ -36,7 +44,7 @@ describe('Shopping list service object', function() {
   after(() => db.destroy());
 
   context(`Given 'shopping_list' has data`, () => {
-    before(() => {
+    beforeEach(() => {
       return db('shopping_list')
         .insert(testItems);
     });
@@ -46,6 +54,23 @@ describe('Shopping list service object', function() {
       return ShoppingListService.getAllItems(db)
         .then(actual => {
           expect(actual).to.eql(testItems);
+        });
+    });
+
+    it(`getById() resolves an item by id from 'shopping_list' table`, () => {
+      const thirdId = 3;
+      const thirdTestItem = testItems[thirdId - 1];
+
+      return ShoppingListService.getById(db, thirdId)
+        .then(actual => {
+          expect(actual).to.eql({
+            id: thirdId,
+            name: thirdTestItem.name,
+            price: thirdTestItem.price,
+            category: thirdTestItem.category,
+            checked: thirdTestItem.checked,
+            date_added: thirdTestItem.date_added
+          });
         });
     });
   });

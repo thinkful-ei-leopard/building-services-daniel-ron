@@ -9,8 +9,15 @@ const ShoppingListService = {
       .returning('*')
       .then(rows => {
         return rows[0];
-      });
-        
+      });   
+  },
+
+  getById(knex, id) {
+    return knex
+      .select('*')
+      .from('shopping_list')
+      .where('id', id)
+      .first();
   }
 };
 
