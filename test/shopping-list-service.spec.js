@@ -5,18 +5,20 @@ describe('Shopping list service object', function() {
   let db;
   let testItems = [
     {
+      id: 1,
+      date_added: new Date('2020-02-26'),
       name: 'fiddle sticks',
       price:  1.65,
       category: 'Main',
       checked: 'true',
-
     },
     {
+      id: 2,
+      date_added: new Date('2020-02-25'),
       name: 'faddle sticks',
       price:  1.95,
       category: 'Lunch',
       checked: 'false',
-
     },
   ];
 
