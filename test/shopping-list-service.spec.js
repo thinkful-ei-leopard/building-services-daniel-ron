@@ -10,7 +10,7 @@ describe('Shopping list service object', function() {
       name: 'fiddle sticks',
       price:  1.65,
       category: 'Main',
-      checked: 'true',
+      checked: true,
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ describe('Shopping list service object', function() {
       name: 'faddle sticks',
       price:  1.95,
       category: 'Lunch',
-      checked: 'false',
+      checked: false,
     },
   ];
 
@@ -30,6 +30,8 @@ describe('Shopping list service object', function() {
   });
 
   before(() => db('shopping_list').truncate());
+
+  afterEach(() => db('shopping_list').truncate());
 
   after(() => db.destroy());
 
@@ -44,6 +46,15 @@ describe('Shopping list service object', function() {
       return ShoppingListService.getAllItems(db)
         .then(actual => {
           expect(actual).to.eql(testItems);
+        });
+    });
+  });
+
+  context(`Given 'shopping_list' has no data`, () => {
+    it(`getAllItems() resolves an empty array`, () => {
+      return ShoppingListService.getAllItems(db)
+        .then(actual => {
+          expect(actual).to.eql([]);
         });
     });
   });
