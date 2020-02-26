@@ -9,14 +9,14 @@ describe('Shopping list service object', function() {
       price:  1.65,
       category: 'Main',
       checked: 'true',
-      date_added,
+
     },
     {
       name: 'faddle sticks',
       price:  1.95,
       category: 'Lunch',
       checked: 'false',
-      date_added,
+
     },
   ];
 
@@ -26,6 +26,13 @@ describe('Shopping list service object', function() {
       connection: process.env.TEST_DB_URL,
     });
   });
+
+  before(() => {
+    return db('shopping_list')
+      .insert(testItems);
+  });
+
+  after(() => db.destroy());
 
   describe('getAllItems()', () => {
     it(`resolves all articles from 'blogful_articles' table`, () => {
